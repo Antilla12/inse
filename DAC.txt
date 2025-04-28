@@ -1,0 +1,32 @@
+﻿5. To configure and understand Discretionary Access Control (DAC mechanisms in a Linux environment.
+
+
+1. Discretionary Access Control (DAC)
+a) Create Files and Directories:
+mkdir dac_demo && cd dac_demo
+touch confidential.txt
+
+
+b) Set Permissions Using chmod:
+chmod 600 confidential.txt
+(for WSL) ~ sudo chmod o-rx /home/username/dac_demo
+
+
+c) Change File Ownership Using chown
+sudo adduser alice
+sudo chown alice:alice confidential.txt
+
+
+d) Log in as Alice:
+su alice
+cat confidential.txt
+(if su doesn’t work on WSL) (FOR WSL)
+sudo -i -u alice
+sudo su - alice
+ls /home/atharv/dac_demo ~ Output :
+ls: cannot access '/home/username/dac_demo': Permission denied
+
+
+e) Results:
+* Alice, as the file owner, can access confidential.txt
+* Other users (e.g., the default user) cannot read or write to the file because of the restrictive permissions (600).

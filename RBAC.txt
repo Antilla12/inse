@@ -1,0 +1,28 @@
+﻿7 . To configure and understand Role-Based Access Control (RBAC) mechanisms in a Linux environment.
+
+
+a) Create Roles (Groups):
+sudo groupadd managers
+sudo usermod -aG managers alice
+
+
+b) Set Permissions on a File:
+touch manager_notes.txt
+sudo chown :managers manager_notes.txt
+sudo chmod 770 manager_notes.txt
+
+
+c) Test Access:
+* As Alice ~
+su alice
+c⁍
+To Exit alice to add new user ~ command : exit
+To add a new user ~ command : sudo adduser <username>
+To test with <uother_user> ~ command : su <other_user/username>
+* As <other_User>
+cat manager_notes.txt
+
+
+d) Results:
+Access to manager_notes.txt is controlled by group membership
+(role), not individual ownership

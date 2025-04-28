@@ -1,0 +1,43 @@
+﻿8. Generation of Public/Private Key Pairs, Creation of a User Certificate, and Digital Signing Using a Certificate Authority
+
+
+1. Create a directory for keys and navigate to it:
+mkdir key && cd key
+
+
+2. Generate a private key (RSA algorithm) with AES256 encryption:
+openssl genpkey -algorithm RSA -out private.key -aes256
+* Enter a PEM pass phrase ~ [Enter anything, but remember it]
+
+
+3. Generate the public key from the private key:
+openssl rsa -pubout -in private.key -out public.key
+* Enter the pass phrase.
+
+
+4. Create a Certificate Signing Request (CSR) using the private key:
+openssl req -new -key private.key -out user.csr
+* Enter the pass phrase for the private key
+* Fill out the Distinguished Name (DN) fields
+
+
+5. Create a self-signed certificate using the private key and CSR:
+openssl req -x509 -key private.key -in user.csr -out user_cert.crt -days 365
+* Enter the pass phrase for the private key
+* A warning may appear ~ ignore it *
+
+
+6. Generate the Certificate Authority (CA) private key (with AES256 encryption):
+openssl genpkey -algorithm RSA -out ca.key -aes256
+* Enter a PEM pass phrase for the CA key and verify it
+
+
+7. Create the CA self-signed certificate:
+openssl req -x509 -key ca.key -out ca.crt -days 3650
+* Enter the pass phrase for the CA key
+* Fill out the Distinguished Name (DN) fields:
+
+
+8. Sign the user CSR with the CA key to generate the signed user certificate:
+openssl x509 -req -in user.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out user_signed_cert.crt -days 365
+* Enter the pass phrase for the CA key when prompted.

@@ -1,0 +1,22 @@
+﻿1. To explore the Confidentiality identify potential security violations through practical examples and system analysis.
+
+
+1. Create a File Containing Sensitive Information
+* Open a terminal or command prompt.
+* Create a text file named sensitive_file.txt:
+Linux: echo "Confidential Data: Usernames and Passwords" > sensitive_file.txt
+Windows: Open Notepad, type "Confidential Data: Usernames and Passwords", and save the file as sensitive_file.txt.
+
+
+2. Restrict File Permissions
+* Set file permissions so only the owner can access it:
+Linux: Run chmod 600 sensitive_file.txt
+Windows: Right-click the file → Properties → Security → Edit permissions → Deny access for all users except the owner.
+
+
+3. Simulate Unauthorized Access
+* Switch to another user or simulate unauthorized access:
+Linux: Use su or create a new user, then try accessing the file:
+cat sensitive_file.txt
+Windows: Switch user accounts or create a new user, then try opening the file.
+* Observe the error message (e.g., "Permission denied").

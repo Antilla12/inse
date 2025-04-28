@@ -1,0 +1,31 @@
+﻿6. To configure and understand Mandatory Access Control (MAC) mechanisms in a Linux environment.
+
+
+SELinux won't work. ~ You would need a full Linux VM (like Fedora, CentOS, or RHEL) or a real Linux machine
+Requirement ~ Linux VM or Linux Machine
+
+
+1. Mandatory Access Control (MAC)
+Create Files and Directories:
+mkdir mac_demo && cd mac_demo
+touch confidential.txt
+
+
+a) Enable SELinux:
+getenforce
+If SELinux is not enabled:
+sudo setenforce 1
+
+
+b) Apply Security Context to a File: (Create A file name : confidential.txt)
+ls -Z confidential.txt
+
+
+c) Test Policy Enforcement:
+Try accessing the file through an unauthorized process.
+sudo cat /var/log/audit/audit.log
+
+
+d) Results:
+SELinux denies access to unauthorized processes and logs the event in audit.log.
+Unauthorized processes will be denied access, even if they are run by the file owner.

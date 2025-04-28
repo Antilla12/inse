@@ -1,0 +1,20 @@
+﻿2. To explore the Integrity identify potential security violations through practical examples and system analysis.
+
+
+1. Create or Access a Log File
+* Use an existing log file or create a simulated one:
+Linux: sudo nano /var/log/syslog (requires root access).
+Windows: Open Event Viewer (eventvwr) or create a text file named logfile.txt
+
+
+2. Modify the Log File (Simulate Unauthorized Changes)
+* Add or change log entries to simulate a security violation:
+Linux: Edit the file: sudo nano /var/log/syslog → Add a fake entry: Jan 1 12:00:00 UnauthorizedAccess: Admin login
+Windows: Open logfile.txt in Notepad and add UnauthorizedAccess: Admin login.
+
+
+3. Verify Integrity with Hashing
+* Calculate the file's hash before and after modification
+Linux: Use sha256sum logfile.txt and note the hash
+Windows: Use PowerShell: Get-FileHash .\logfile.txt -Algorithm SHA256
+* Observe the hash difference.

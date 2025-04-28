@@ -1,0 +1,47 @@
+﻿4. To explore the Confidentiality and Availability and identify potential security violations through practical examples and system analysis.
+
+
+1. Create a File Containing Sensitive Information
+* Open a terminal or command prompt.
+* Create a text file named sensitive_file.txt:
+Linux: echo "Confidential Data: Usernames and Passwords" > sensitive_file.txt
+Windows: Open Notepad, type "Confidential Data: Usernames and Passwords", and save the file as sensitive_file.txt.
+
+
+2. Restrict File Permissions
+* Set file permissions so only the owner can access it:
+Linux: Run chmod 600 sensitive_file.txt
+Windows: Right-click the file → Properties → Security → Edit permissions → Deny access for all users except the owner.
+
+
+3. Simulate Unauthorized Access
+* Switch to another user or simulate unauthorized access:
+Linux: Use su or create a new user, then try accessing the file:cat sensitive_file.txt
+Windows: Switch user accounts or create a new user, then try opening the file.
+* Observe the error message (e.g., "Permission denied").
+—
+1. Set Up a Simple Web Server (Optional)
+Linux: Use Python to start a basic web server: python3 -m http.server 8080
+Windows: Use IIS or WAMP/XAMPP to set up a local server.
+
+
+2. Simulate Denial-of-Service (DoS) Attack
+* Use a tool to overload the server with requests:
+Linux: Install and use ab (Apache Benchmark):
+ab -n 1000 -c 100 http://localhost:8080/
+[-n: Total number of requests, -c: Number of concurrent requests.]
+Windows: Use a custom PowerShell script or any load-testing tool like JMeter
+
+
+3. Monitor Server Behavior
+* Observe the server response time during the attack:
+Linux: Check server logs or terminal output for delays or errors.
+Windows: Use Task Manager or Resource Monitor to track CPU and network usage.
+* Note any timeouts or connection refusals.
+
+
+4. Restore Normal Operations
+* Stop the attack and ensure normal availability:
+Linux: Terminate the ab command or server process (Ctrl+C)
+Windows: Stop the server or restart it via IIS Manager.
+* Verify that the server is responsive again.
