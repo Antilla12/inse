@@ -1,4 +1,4 @@
-﻿7 . To configure and understand Role-Based Access Control (RBAC) mechanisms in a Linux environment.
+7 . To configure and understand Role-Based Access Control (RBAC) mechanisms in a Linux environment.
 
 
 a) Create Roles (Groups):
@@ -15,7 +15,6 @@ sudo chmod 770 manager_notes.txt
 c) Test Access:
 * As Alice ~
 su alice
-c⁍
 To Exit alice to add new user ~ command : exit
 To add a new user ~ command : sudo adduser <username>
 To test with <uother_user> ~ command : su <other_user/username>
